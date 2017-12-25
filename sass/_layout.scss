@@ -1,0 +1,104 @@
+.container {
+  // If viewport width is greater than 1200px, otherwise 100% width
+  max-width: 120rem;
+  // Center container and add space above & below
+  margin: 8rem auto;
+  background-color: var(--color-grey-light-1);
+  box-shadow: var(--shadow-dark);
+
+  min-height: 50rem;
+
+  @media only screen and (max-width: $bp-largest) {
+    // We don't need parent element anymore
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+.header {
+  font-size: 1.4rem;
+  height: 7rem;
+  background-color: #fff;
+  border-bottom: var(--line);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media only screen and (max-width: $bp-smallest) {
+    // Move search bar down to a different row
+    flex-wrap: wrap;
+    // Control the space between the rows of the container to center the search bar
+    align-content: space-around;
+    // Create more room between search bar and the header items above it
+    height: 11rem;
+  }
+}
+.content {
+  display: flex;
+  @media only screen and (max-width: $bp-medium) {
+    // Put navigation at top
+    flex-direction: column;
+  }
+}
+.sidebar {
+  background-color: var(--color-grey-dark-1);
+  // We don't want this flex item to grow more than the width defined, or shrink since we're using a % value for flex basis
+  flex: 0 0 18%;
+  display: flex;
+  flex-direction: column;
+  // Push copyright info on sidebar to bottom while keeping icons at top
+  justify-content: space-between;
+}
+.hotel-view {
+  background-color: #fff;
+  // We want it to occupy the entire remaining space
+  flex: 1;
+}
+
+.detail {
+  font-size: 1.4rem;
+  // The .description and .user-reviews should be side by side
+  display: flex;
+  // Use the same padding as .description right margin
+  padding: 4.5rem;
+  background-color: var(--color-grey-light-1);
+  border-bottom: var(--line);
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 3rem;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    // On small screens have the description & user reviews on top of each other
+    flex-direction: column;
+  }
+}
+
+.description {
+  background-color: #fff;
+  box-shadow: var(--shadow-light);
+  padding: 3rem;
+  // Use up 60% of the space--NOTE usually when using a percentage in flex you set grow and shrink properties to 0.
+  flex: 0 0 60%;
+  margin-right: 4.5rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 2rem;
+    margin-right: 3rem;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    margin-right: 0;
+    margin-bottom: 3rem;
+  }
+}
+
+.user-reviews {
+  // Use up the remaining space
+  flex: 1;
+  // Center the link
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
